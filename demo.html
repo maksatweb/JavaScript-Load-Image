@@ -77,6 +77,13 @@
             <h2>Select an image file</h2>
             <p><input type="file" id="file-input"></p>
             <p>
+                <h6>Options</h6>
+                <label>width: <input type="text" id="id_width" value="300"></label>
+                <label>height: <input type="text" id="id_height" value=""></label>
+                <label><input type="checkbox" id="id_crop"> crop</label>
+                <label><input type="checkbox" id="id_upscale"> upscale</label>
+            </p>
+            <p>
                 <span class="label label-info">Notice</span> 
                 Or <strong>drag &amp; drop</strong> an image file onto this webpage.
             </p>
@@ -110,7 +117,10 @@
                     result.children().replaceWith(img);
                 },
                 {
-                    maxWidth: result.children().outerWidth(),
+                    width: Number($('#id_width').val()),
+                    height: Number($('#id_height').val()),
+                    crop: $('#id_crop').is(':checked'),
+                    upscale: $('#id_upscale').is(':checked'),
                     canvas: true
                 }
             );
