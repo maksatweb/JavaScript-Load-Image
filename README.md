@@ -1,7 +1,8 @@
 # JavaScript Load Image
 
 ## Demo
-[JavaScript Load Image Demo](http://blueimp.github.com/JavaScript-Load-Image/)
+[JavaScript Load Image Demo](http://srusskih.github.com/JavaScript-Load-Image/demo.html)
+
 
 ## Usage
 Include the (minified) JavaScript Load Image script in your HTML markup:
