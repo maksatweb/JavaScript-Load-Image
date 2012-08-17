@@ -19,7 +19,7 @@ document.getElementById('file-input').onchange = function (e) {
         function (img) {
             document.body.appendChild(img);
         },
-        {maxWidth: 600}
+        {width: 600}
     );
 };
 ```
@@ -42,7 +42,7 @@ document.getElementById('file-input').onchange = function (e) {
         function (img) {
             document.body.appendChild(img);
         },
-        {maxWidth: 600}
+        {width: 600}
     );
     if (!loadingImage) {
         // Alternative code ...
@@ -59,7 +59,7 @@ document.getElementById('file-input').onchange = function (e) {
         function (img) {
             document.body.appendChild(img);
         },
-        {maxWidth: 600}
+        {width: 600}
     );
     loadingImage.onload = loadingImage.onerror = null;
 };
@@ -78,16 +78,16 @@ window.loadImage(
             document.body.appendChild(img);
         }
     },
-    {maxWidth: 600}
+    {width: 600}
 );
 ```
 
 The optional third argument is a map of options:
 
-* **maxWidth**: Defines the maximum width of the img/canvas element.
-* **maxHeight**: Defines the maximum height of the img/canvas element.
-* **minWidth**: Defines the minimum width of the img/canvas element.
-* **minHeight**: Defines the minimum height of the img/canvas element.
+* **width**: Defines the width of the img/canvas element.
+* **height**: Defines the height of the img/canvas element.
+* **crop**: Defines croping of the canvas element. (for now works only for canvas)
+* **upscale**: Define upscaling of the img/canvas element.
 * **canvas**: Defines if the returned element should be a [canvas](https://developer.mozilla.org/en/HTML/Canvas) element.
 * **noRevoke**: By default, the [created object URL](https://developer.mozilla.org/en/DOM/window.URL.createObjectURL) is revoked after the image has been loaded, except when this option is set to *true*.
 
@@ -100,10 +100,10 @@ window.loadImage(
         document.body.appendChild(img);
     },
     {
-        maxWidth: 600,
-        maxHeight: 300,
-        minWidth: 100,
-        minHeight: 50,
+        width: 600,
+        height: 300,
+        crop: true,
+        upsacel: true,
         canvas: true,
         noRevoke: true
     }

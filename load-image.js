@@ -58,32 +58,55 @@
     // as image, else the scaled image:
     loadImage.scale = function (img, options) {
         options = options || {};
+
         var canvas = document.createElement('canvas'),
             width = img.width,
             height = img.height,
+            x = 0, y = 0,
+            scale;
+
+        // if crop in options then we have to get biggest scale factor
+        if (options.crop || false){
             scale = Math.max(
-                (options.minWidth || width) / width,
-                (options.minHeight || height) / height
+                (options.width) / width,
+                (options.height) / height
             );
-        if (scale > 1) {
+        } else {
+            // else we have to get lowest
+            scale = Math.min(
+                (options.width) / width,
+                (options.height) / height
+            );
+        }
+
+        // if scale factor is below 1, or more then and upscale options is
+        // then we going to calculate new image size
+        if (scale < 1 || (scale > 1 && (options.upscale || false))){
             width = parseInt(width * scale, 10);
             height = parseInt(height * scale, 10);
         }
-        scale = Math.min(
-            (options.maxWidth || width) / width,
-            (options.maxHeight || height) / height
-        );
-        if (scale < 1) {
-            width = parseInt(width * scale, 10);
-            height = parseInt(height * scale, 10);
+
+        if (options.crop || false){
+            var dx = width - Math.min(width, options.width || width),
+                dy = height - Math.min(height, options.height || height);
+            
+            // if we have difference with required size and
+            // currently calculated size, we have to calculate
+            // image offset to got correct croping
+            if (dx || dy) {
+                x = -1 * parseInt(dx / 2, 10);
+                y = -1 * parseInt(dy / 2, 10);
+            }
         }
+
         if (img.getContext || (options.canvas && canvas.getContext)) {
             canvas.width = width;
             canvas.height = height;
             canvas.getContext('2d')
-                .drawImage(img, 0, 0, width, height);
+                .drawImage(img, x, y, width, height);
             return canvas;
         }
+
         img.width = width;
         img.height = height;
         return img;
