@@ -62,20 +62,20 @@
         var canvas = document.createElement('canvas'),
             width = img.width,
             height = img.height,
-            x = 0, y = 0,
+            x = 0, y = 0, dx = 0, dy = 0,
             scale;
 
         // if crop in options then we have to get biggest scale factor
         if (options.crop || false){
             scale = Math.max(
-                (options.width) / width,
-                (options.height) / height
+                (options.width || width) / width,
+                (options.height || height) / height
             );
         } else {
             // else we have to get lowest
             scale = Math.min(
-                (options.width) / width,
-                (options.height) / height
+                (options.width || width) / width,
+                (options.height || height) / height
             );
         }
 
@@ -86,13 +86,14 @@
             height = parseInt(height * scale, 10);
         }
 
+        // if need to crop, then
         if (options.crop || false){
-            var dx = width - Math.min(width, options.width || width),
-                dy = height - Math.min(height, options.height || height);
+            // we have to get difference between required size and image size
+            dx = width - Math.min(width, options.width || width);
+            dy = height - Math.min(height, options.height || height);
             
-            // if we have difference with required size and
-            // currently calculated size, we have to calculate
-            // image offset to got correct croping
+            // if we have difference is, then we have to get
+            // image offset in canvas, to crop the image correctly
             if (dx || dy) {
                 x = -1 * parseInt(dx / 2, 10);
                 y = -1 * parseInt(dy / 2, 10);
@@ -100,10 +101,15 @@
         }
 
         if (img.getContext || (options.canvas && canvas.getContext)) {
-            canvas.width = width;
-            canvas.height = height;
+            // if was have to crop our image, thne we have use
+            // required image sizes for canvas
+            canvas.width = width - dx;
+            canvas.height = height - dy;
             canvas.getContext('2d')
-                .drawImage(img, x, y, width, height);
+                .drawImage(img,
+                    0, 0, img.width, img.height,
+                    x, y, width, height
+                );
             return canvas;
         }
 
