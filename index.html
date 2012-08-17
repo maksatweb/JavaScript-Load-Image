@@ -1,130 +1,161 @@
-<!DOCTYPE HTML>
-<!--
-/*
- * JavaScript Load Image Demo 1.2.1
- * https://github.com/blueimp/JavaScript-Load-Image
- *
- * Copyright 2011, Sebastian Tschan
- * https://blueimp.net
- *
- * Licensed under the MIT license:
- * http://www.opensource.org/licenses/MIT
- */
--->
-<html lang="en">
-<head>
-<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
-<meta charset="utf-8">
-<title>JavaScript Load Image</title>
-<meta name="description" content="JavaScript Load Image is a function to load images provided as File or Blob objects or via URL. It returns an optionally scaled HTML img or canvas element.">
-<meta name="viewport" content="width=device-width">
-<link rel="stylesheet" href="http://blueimp.github.com/cdn/css/bootstrap.min.css">
-<style>body{padding-top:60px;}</style>
-<link rel="stylesheet" href="http://blueimp.github.com/cdn/css/bootstrap-responsive.min.css">
-<!--[if lt IE 7]><link rel="stylesheet" href="http://blueimp.github.com/cdn/css/bootstrap-ie6.min.css"><![endif]-->
-<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-</head>
-<body>
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-            <a class="brand" href="https://github.com/blueimp/JavaScript-Load-Image">JavaScript Load Image</a>
-            <div class="nav-collapse">
-                <ul class="nav">
-                    <li class="active"><a href="#">Demo</a></li>
-                    <li>
-                        <a href="https://github.com/srusskih/JavaScript-Load-Image/downloads">  Downloads
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/srusskih/JavaScript-Load-Image">
-                            Source Code
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/srusskih/JavaScript-Load-Image">
-                            Documentation
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/blueimp/JavaScript-Load-Image/issues">
-                            Original Idea of Sebastian Tschan
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Javascript-load-image by srusskih</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Javascript-load-image</h1>
+        <p>JavaScript Load Image is a function to load images provided as File or Blob objects or via URL. It returns an optionally scaled HTML img or canvas element.</p>
+
+        <p class="view"><a href="https://github.com/srusskih/JavaScript-Load-Image">View the Project on GitHub <small>srusskih/JavaScript-Load-Image</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/srusskih/JavaScript-Load-Image/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/srusskih/JavaScript-Load-Image/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/srusskih/JavaScript-Load-Image">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>JavaScript Load Image</h1>
+
+<h2>Demo</h2>
+
+<p><a href="http://srusskih.github.com/JavaScript-Load-Image/demo.html">JavaScript Load Image Demo</a></p>
+
+<h2>Usage</h2>
+
+<p>Include the (minified) JavaScript Load Image script in your HTML markup:</p>
+
+<div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"load-image.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+
+<p>In your application code, use the <strong>loadImage()</strong> function like this:</p>
+
+<div class="highlight"><pre><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'file-input'</span><span class="p">).</span><span class="nx">onchange</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">loadImage</span><span class="p">(</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">files</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+        <span class="kd">function</span> <span class="p">(</span><span class="nx">img</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">img</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="p">{</span><span class="nx">width</span><span class="o">:</span> <span class="mi">600</span><span class="p">}</span>
+    <span class="p">);</span>
+<span class="p">};</span>
+</pre></div>
+
+<h2>Requirements</h2>
+
+<p>The JavaScript Load Image function has zero dependencies.</p>
+
+<p>However, JavaScript Load Image is a very suitable complement to the <a href="https://github.com/blueimp/JavaScript-Canvas-to-Blob">Canvas to Blob</a> function.</p>
+
+<h2>API</h2>
+
+<p>The <strong>loadImage()</strong> function accepts a <a href="https://developer.mozilla.org/en/DOM/File">File</a> or <a href="https://developer.mozilla.org/en/DOM/Blob">Blob</a> object or a simple image URL (e.g. "<a href="http://example.org/image.png%22">http://example.org/image.png"</a>) as first argument.</p>
+
+<p>If a <a href="https://developer.mozilla.org/en/DOM/File">File</a> or <a href="https://developer.mozilla.org/en/DOM/Blob">Blob</a> is passed as parameter, it returns a HTML <strong>img</strong> element if the browser supports the <a href="https://developer.mozilla.org/en/DOM/window.URL">URL</a> API or a <a href="https://developer.mozilla.org/en/DOM/FileReader">FileReader</a> object if supported, or <strong>false</strong>.<br>
+It always returns a HTML <strong>img</strong> element when passing an image URL:</p>
+
+<div class="highlight"><pre><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'file-input'</span><span class="p">).</span><span class="nx">onchange</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">loadingImage</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">loadImage</span><span class="p">(</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">files</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+        <span class="kd">function</span> <span class="p">(</span><span class="nx">img</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">img</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="p">{</span><span class="nx">width</span><span class="o">:</span> <span class="mi">600</span><span class="p">}</span>
+    <span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">loadingImage</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Alternative code ...</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+
+<p>The <strong>img</strong> element or <a href="https://developer.mozilla.org/en/DOM/FileReader">FileReader</a> object returned by the <strong>loadImage()</strong> function allows to abort the loading process by setting the <strong>onload</strong> and <strong>onerror</strong> event handlers to null:</p>
+
+<div class="highlight"><pre><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'file-input'</span><span class="p">).</span><span class="nx">onchange</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">loadingImage</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">loadImage</span><span class="p">(</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">files</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+        <span class="kd">function</span> <span class="p">(</span><span class="nx">img</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">img</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="p">{</span><span class="nx">width</span><span class="o">:</span> <span class="mi">600</span><span class="p">}</span>
+    <span class="p">);</span>
+    <span class="nx">loadingImage</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="nx">loadingImage</span><span class="p">.</span><span class="nx">onerror</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+
+<p>The second argument must be a <strong>callback</strong> function, which is called when the image has been loaded or an error occurred while loading the image. The callback function is passed one argument, which is either a HTML <strong>img</strong> element, a <a href="https://developer.mozilla.org/en/HTML/Canvas">canvas</a> element, or an <a href="https://developer.mozilla.org/en/DOM/event">Event</a> object of type "<strong>error</strong>":</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">imageUrl</span> <span class="o">=</span> <span class="s2">"http://example.org/image.png"</span><span class="p">;</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">loadImage</span><span class="p">(</span>
+    <span class="nx">imageUrl</span><span class="p">,</span>
+    <span class="kd">function</span> <span class="p">(</span><span class="nx">img</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">img</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="s2">"error"</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Error loading image "</span> <span class="o">+</span> <span class="nx">imageUrl</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">img</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="p">{</span><span class="nx">width</span><span class="o">:</span> <span class="mi">600</span><span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+
+<p>The optional third argument is a map of options:</p>
+
+<ul>
+<li>
+<strong>width</strong>: Defines the width of the img/canvas element.</li>
+<li>
+<strong>height</strong>: Defines the height of the img/canvas element.</li>
+<li>
+<strong>crop</strong>: Defines croping of the canvas element. (for now works only for canvas)</li>
+<li>
+<strong>upscale</strong>: Define upscaling of the img/canvas element.</li>
+<li>
+<strong>canvas</strong>: Defines if the returned element should be a <a href="https://developer.mozilla.org/en/HTML/Canvas">canvas</a> element.</li>
+<li>
+<strong>noRevoke</strong>: By default, the <a href="https://developer.mozilla.org/en/DOM/window.URL.createObjectURL">created object URL</a> is revoked after the image has been loaded, except when this option is set to <em>true</em>.</li>
+</ul><p>They can be used the following way:</p>
+
+<div class="highlight"><pre><span class="nb">window</span><span class="p">.</span><span class="nx">loadImage</span><span class="p">(</span>
+    <span class="nx">fileOrBlobOrUrl</span><span class="p">,</span>
+    <span class="kd">function</span> <span class="p">(</span><span class="nx">img</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">img</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nx">width</span><span class="o">:</span> <span class="mi">600</span><span class="p">,</span>
+        <span class="nx">height</span><span class="o">:</span> <span class="mi">300</span><span class="p">,</span>
+        <span class="nx">crop</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nx">upsacel</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nx">canvas</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nx">noRevoke</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+
+<p>All settings are optional. By default, the image is returned as HTML <strong>img</strong> element without any image size restrictions.</p>
+
+<h2>License</h2>
+
+<p>The JavaScript Load Image script is released under the <a href="http://www.opensource.org/licenses/MIT">MIT license</a>.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/srusskih">srusskih</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
     </div>
-</div>
-<div class="container">
-    <div class="page-header">
-        <h1>JavaScript Load Image Demo</h1>
-    </div>
-    <blockquote>
-        <p>
-            <a href="https://developer.mozilla.org/en/JavaScript/">JavaScript</a> Load Image is a function to load images provided as <a href="https://developer.mozilla.org/en/DOM/File">File</a> or <a href="https://developer.mozilla.org/en/DOM/Blob">Blob</a> objects or via URL.<br>
-            It returns an optionally scaled HTML <strong>img</strong> or <strong>canvas</strong> element.
-        </p>
-    </blockquote>
-    <br>
-    <div class="row">
-        <div class="span5">
-            <h2>Select an image file</h2>
-            <p><input type="file" id="file-input"></p>
-            <p>
-                <span class="label label-info">Notice</span> 
-                Or <strong>drag &amp; drop</strong> an image file onto this webpage.
-            </p>
-        </div>
-        <div class="span7">
-            <h2>Result</h2>
-            <div class="well" id="result">
-                <p>
-                    <span class="label label-warning">Notice</span> 
-                    This demo works only in browsers with support for the <a href="https://developer.mozilla.org/en/DOM/window.URL">URL</a> or <a href="https://developer.mozilla.org/en/DOM/FileReader">FileReader</a> API.
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
-<script src="load-image.js"></script>
-<!-- jQuery and Bootstrap JS are not required, but included for the demo -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="http://blueimp.github.com/cdn/js/bootstrap.min.js"></script>
-<script>
-/*global jQuery, window, document */
-(function ($) {
-    'use strict';
-    var result = $('#result'),
-        load = function (e) {
-            e = e.originalEvent;
-            e.preventDefault();
-            window.loadImage(
-                (e.dataTransfer || e.target).files[0],
-                function (img) {
-                    result.children().replaceWith(img);
-                },
-                {
-                    maxWidth: result.children().outerWidth(),
-                    canvas: true
-                }
-            );
-        };
-    $(document)
-        .on('dragover', function (e) {
-            e = e.originalEvent;
-            e.preventDefault();
-            e.dataTransfer.dropEffect = 'copy';
-        })
-        .on('drop', load);
-    $('#file-input').on('change', load);
-}(jQuery));
-</script>
-</body> 
-</html>
+    <script src="javascripts/scale.fix.js"></script>
     
+  </body>
+</html>
